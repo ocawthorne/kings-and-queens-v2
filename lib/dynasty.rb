@@ -19,7 +19,7 @@ class Dynasty
 
     def self.list_monarchs_by_dynasty(index)
         @@tempMonarchs = Monarch.all.select {|monarch| monarch.dynasty == self.all[index]}
-        puts self.all[index].name.upcase
+        puts self.all[index].name.upcase.green
         @@tempMonarchs.each_with_index {|monarch, i| puts "#{i+1}. #{monarch.name[-1].to_i != 0 ? monarch.name.chop : monarch.name}"}
     end
 

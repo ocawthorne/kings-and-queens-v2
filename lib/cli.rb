@@ -11,16 +11,20 @@ class CLI
     def run
         puts "Hello, welcome to Monarch Explorer!".green
         sleep(1)
+        puts "Here, you will be able to read about all British monarchs since 802 AD.".green
+        sleep(1)
         puts "Loading all divinely-appointed monarchs...".blue
         Scraper.new.scrape_1
         puts "Done!".green
         sleep(1)
+        puts "Press any key to continue to the main menu."
+        STDIN.getch
         main_menu
     end
 
     def main_menu
         puts "\nWelcome to the Main Menu. Please make a selection. Type \"menu\" at any stage to return here."
-        puts "Here, you will be able to read about all British monarchs since 802 AD."
+        
         puts "1. Display all monarchs."
         puts "2. Search by house/dynasty."
         puts "3. View bookmarks."
@@ -52,6 +56,7 @@ class CLI
 
     def monarch_menu
         puts "--------------------"
+        puts "ALL MONARCHS".green
         Monarch.print_monarchs_for_selection
         puts "--------------------"
         puts "Please enter a number to read more about a monarch, or type menu to return."
@@ -83,7 +88,7 @@ class CLI
 
     def dynasty_menu
         puts "--------------------"
-        puts "HOUSES AND DYNASTIES"
+        puts "HOUSES AND DYNASTIES".green
         Dynasty.print_dynasties_for_selection
         puts "--------------------"
         puts "Which dynasty or house would you like to focus on?"
