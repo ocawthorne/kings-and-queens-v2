@@ -1,6 +1,5 @@
 require 'io/console'
 require 'colorize'
-require 'pry'
 
 require_relative "./scraper.rb"
 
@@ -11,12 +10,12 @@ class CLI
     def run
         puts "Hello, welcome to Monarch Explorer!".green
         sleep(1)
-        puts "Here, you will be able to read about all British monarchs since 802 AD.".green
-        sleep(1)
+
         puts "Loading all divinely-appointed monarchs...".blue
         Scraper.new.scrape_1
         puts "Done!".green
         sleep(1)
+        puts "\nHere, you will be able to read about all British monarchs since 802 AD.".green
         puts "Press any key to continue to the main menu."
         STDIN.getch
         main_menu
@@ -32,10 +31,8 @@ class CLI
         puts "5. Exit."
         user_input = 0
         until (1..5).to_a.include?(user_input)
+            print ">> "
             user_input = gets.chomp
-            # if (1..5).to_a.include?(user_input.to_i)
-            #     [monarch_menu, dynasty_menu, bookmark_view, bookmark_delete, goodbye][user_input.to_i-1]
-            #     binding.pry
             if user_input.to_i == 1
                 monarch_menu
             elsif user_input.to_i == 2
@@ -62,6 +59,7 @@ class CLI
         puts "Please enter a number to read more about a monarch, or type menu to return."
         user_input = 0
         until (1..Monarch.all.count).to_a.include?(user_input.to_i)
+            print ">> "
             user_input = gets.chomp
             if (1..Monarch.all.count).to_a.include?(user_input.to_i)
                 select_to_index = user_input.to_i - 1
@@ -74,10 +72,12 @@ class CLI
             end
         end
         puts "\nSave this monarch into bookmarks? (Y/N)"
+        print ">> "
         user_input = gets.chomp
         bookmark_add_or_check(user_input, result)
         sleep(0.5)
         puts "Keep looking around this menu? (Y/N) - N will take you back to main menu."
+        print ">> "
         user_input = gets.chomp
         if user_input.downcase == "y"
             monarch_menu
@@ -94,6 +94,7 @@ class CLI
         puts "Which dynasty or house would you like to focus on?"
         user_input = 0
         until (1..Dynasty.all.count).to_a.include?(user_input.to_i)
+            print ">> "
             user_input = gets.chomp
             if user_input == "menu"
                 main_menu
@@ -104,6 +105,7 @@ class CLI
                 puts "Please enter a number to read more about a monarch, type \"back\" to return to dynasties, or type \"menu\" to return."
                 user_input = 0
                 until (1..Dynasty.tempMonarchs.count).to_a.include?(user_input.to_i)
+                    print ">> "
                     user_input = gets.chomp
                     if user_input.downcase == "menu"
                         main_menu
@@ -117,10 +119,12 @@ class CLI
                     end
                 end
                 puts "\nSave this monarch into bookmarks? (Y/N)"
+                print ">> "
                 user_input = gets.chomp
                 bookmark_add_or_check(user_input, result)
                 sleep(0.5)
                 puts "Keep looking around this menu? (Y/N) - N will take you back to main menu."
+                print ">> "
                 user_input = gets.chomp
                 if user_input.downcase == "y"
                     dynasty_menu
