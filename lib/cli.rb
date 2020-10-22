@@ -94,12 +94,14 @@ class CLI
                 puts "--------------------"
                 Dynasty.list_monarchs_by_dynasty(user_input.to_i - 1)
                 puts "--------------------"
-                puts "Please enter a number to read more about a monarch, or type menu to return."
+                puts "Please enter a number to read more about a monarch, type \"back\" to return to dynasties, or type \"menu\" to return."
                 user_input = 0
                 until (1..Dynasty.tempMonarchs.count).to_a.include?(user_input.to_i)
                     user_input = gets.chomp
                     if user_input.downcase == "menu"
                         main_menu
+                    elsif user_input.downcase == "back"
+                        dynasty_menu
                     elsif (1..Dynasty.tempMonarchs.count).to_a.include?(user_input.to_i)
                         result = Dynasty.tempMonarchs[user_input.to_i - 1]
                         result.print_monarch_bio
