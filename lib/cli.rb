@@ -160,9 +160,8 @@ class CLI
     def goodbye
         puts ""
         disp_top = "          ".on_white+"   ".on_red+"          ".on_white
-        disp_middle = "                       ".on_red
+        disp_middle = "  God save the Queen!  ".white.on_red
         puts disp_top, disp_top , disp_middle, disp_top, disp_top
-        puts "\n  God save the Queen!".red
         sleep(1)
         exit
     end
