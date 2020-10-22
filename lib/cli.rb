@@ -168,7 +168,7 @@ class CLI
         disp_middle = "  God save the Queen!  ".white.on_red
         puts disp_top, disp_top , disp_middle, disp_top, disp_top, ""
         if @@bookmarks.count > 0
-            saved_bookmarks = @@bookmarks.map {|bookmark| bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name}.join(", ")
+            saved_bookmarks = @@bookmarks.map {|bookmark| bookmark.name}.join(", ")
             puts "You saved bookmarks for: #{saved_bookmarks}. Don't forget to look into them!" 
         end
         sleep(1)
