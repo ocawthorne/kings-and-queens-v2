@@ -1,8 +1,3 @@
-require 'io/console'
-require 'colorize'
-
-require_relative "./scraper.rb"
-
 class CLI
 
     @@bookmarks = []
@@ -181,5 +176,3 @@ class CLI
     end
 
 end
-
-CLI.new.run

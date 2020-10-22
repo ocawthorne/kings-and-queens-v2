@@ -1,9 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-
-require_relative './monarch.rb'
-require_relative './dynasty.rb'
-
 class Scraper
 
     def get_page

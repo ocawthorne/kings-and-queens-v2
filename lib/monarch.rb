@@ -1,7 +1,3 @@
-require 'colorize'
-
-require_relative './scraper.rb'
-
 class Monarch
     attr_accessor :name, :url, :dynasty, :title, :reign, :bio # All except @title and @bio come from second scrape
 
