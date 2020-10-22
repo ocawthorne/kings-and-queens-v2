@@ -1,5 +1,6 @@
 require 'io/console'
 require 'colorize'
+require 'pry'
 
 require_relative "./scraper.rb"
 
@@ -69,7 +70,7 @@ class CLI
         end
         puts "\nSave this monarch into bookmarks? (Y/N)"
         user_input = gets.chomp
-        @@bookmarks << result ; puts "Added to bookmarks!".green if user_input.downcase == "y"
+        bookmark_add_or_check(user_input, result)
         sleep(0.5)
         puts "Keep looking around this menu? (Y/N) - N will take you back to main menu."
         user_input = gets.chomp
@@ -82,6 +83,7 @@ class CLI
 
     def dynasty_menu
         puts "--------------------"
+        puts "HOUSES AND DYNASTIES"
         Dynasty.print_dynasties_for_selection
         puts "--------------------"
         puts "Which dynasty or house would you like to focus on?"
@@ -111,7 +113,7 @@ class CLI
                 end
                 puts "\nSave this monarch into bookmarks? (Y/N)"
                 user_input = gets.chomp
-                @@bookmarks << result ; puts "Added to bookmarks!".green if user_input.downcase == "y"
+                bookmark_add_or_check(user_input, result)
                 sleep(0.5)
                 puts "Keep looking around this menu? (Y/N) - N will take you back to main menu."
                 user_input = gets.chomp
@@ -145,6 +147,17 @@ class CLI
         main_menu
     end
 
+    def bookmark_add_or_check(user_input, result)
+        if user_input.downcase == "y"
+            if @@bookmarks.include?(result)
+                puts "This monarch is already in your bookmarks!".yellow
+            else
+                @@bookmarks << result
+                puts "Added to bookmarks!".green
+            end
+        end
+    end
+
     def bookmark_delete
         if @@bookmarks.count == 0 then puts "\nYou have no bookmarks to delete." ; sleep(1) ; main_menu end
         puts "\nAre you sure you want to clear #{@@bookmarks.count} record"+(@@bookmarks.count != 1 ? "s" : "")+"? (Y/N)"
@@ -161,7 +174,11 @@ class CLI
         puts ""
         disp_top = "          ".on_white+"   ".on_red+"          ".on_white
         disp_middle = "  God save the Queen!  ".white.on_red
-        puts disp_top, disp_top , disp_middle, disp_top, disp_top
+        puts disp_top, disp_top , disp_middle, disp_top, disp_top, ""
+        if @@bookmarks.count > 0
+            dont_forget = @@bookmarks.map {|bookmark| bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name}.join(", ")
+            puts "You took interest in: #{dont_forget}. Don't forget to look into them!" 
+        end
         sleep(1)
         exit
     end
