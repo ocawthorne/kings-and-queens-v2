@@ -22,7 +22,6 @@ class CLI
 
     def main_menu
         puts "\nWelcome to the Main Menu. Please make a selection. Type \"menu\" at any stage to return here."
-        
         puts "1. Display all monarchs."
         puts "2. Search by house/dynasty."
         puts "3. View bookmarks."
@@ -169,8 +168,8 @@ class CLI
         disp_middle = "  God save the Queen!  ".white.on_red
         puts disp_top, disp_top , disp_middle, disp_top, disp_top, ""
         if @@bookmarks.count > 0
-            dont_forget = @@bookmarks.map {|bookmark| bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name}.join(", ")
-            puts "You took interest in: #{dont_forget}. Don't forget to look into them!" 
+            saved_bookmarks = @@bookmarks.map {|bookmark| bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name}.join(", ")
+            puts "You saved bookmarks for: #{saved_bookmarks}. Don't forget to look into them!" 
         end
         sleep(1)
         exit
