@@ -20,7 +20,7 @@ class Monarch
     end
 
     def self.print_monarchs_for_selection
-        @@all.each_with_index { |monarch, i| puts "#{i+1}. #{monarch.name_and_reign}" } # | #{monarch.dynasty.name} optional
+        @@all.each_with_index { |monarch, i| puts "#{i+1}. #{monarch.name_and_reign}" }
     end
 
     def print_monarch_bio
