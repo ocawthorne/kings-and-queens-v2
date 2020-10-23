@@ -4,3 +4,7 @@ This Ruby application provides a Command Line Interface (CLI) for a user to navi
 
 ## Technical Aspects
 The application predominantly uses the Nokogiri gem to extract information from the Britannica website and, from this level, digs one level deeper into the URL of each monarch to attain more information such as date of birth, death, reigning period, dynasty (with the notable exceptions of Oliver Cromwell and his son) and a short biography.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/ocawthorne/kings-and-queens-v2. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
