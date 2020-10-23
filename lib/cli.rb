@@ -40,12 +40,12 @@ class CLI
         puts "ALL MONARCHS".green
         Monarch.print_monarchs_for_selection
         puts "--------------------"
-        puts "Please enter a number to read more about a monarch, or type menu to return."
+        puts "Please enter a number to read more about a monarch, or type menu to return to the main menu."
         user_input = 0
         until (1..Monarch.all.count).to_a.include?(user_input.to_i)
             user_input = user_input_method
             if (1..Monarch.all.count).to_a.include?(user_input.to_i)
-                select_to_index = user_input.to_i - 1
+                select_to_index = user_input.to_i-1
                 result = Monarch.all[select_to_index]
                 result.print_monarch_bio
             elsif user_input.to_s.downcase == "menu"
@@ -80,9 +80,9 @@ class CLI
                 main_menu
             elsif (1..Dynasty.all.count).to_a.include?(user_input.to_i)
                 puts "--------------------"
-                Dynasty.list_monarchs_by_dynasty(user_input.to_i - 1)
+                Dynasty.list_monarchs_by_dynasty(user_input.to_i-1)
                 puts "--------------------"
-                puts "Please enter a number to read more about a monarch, type \"back\" to return to dynasties, or type \"menu\" to return."
+                puts "Please enter a number to read more about a monarch, type \"back\" to return to dynasties, or type \"menu\" to return to the main menu."
                 user_input = 0
                 until (1..Dynasty.tempMonarchs.count).to_a.include?(user_input.to_i)
                     user_input = user_input_method
@@ -91,7 +91,7 @@ class CLI
                     elsif user_input.to_s.downcase == "back"
                         dynasty_menu
                     elsif (1..Dynasty.tempMonarchs.count).to_a.include?(user_input.to_i)
-                        result = Dynasty.tempMonarchs[user_input.to_i - 1]
+                        result = Dynasty.tempMonarchs[user_input.to_i-1]
                         result.print_monarch_bio
                     else
                         puts "Invalid input."
@@ -101,7 +101,7 @@ class CLI
                 user_input = user_input_method
                 bookmark_add_or_check(user_input, result)
                 sleep(0.5)
-                puts "Keep looking around this menu? (Y/N) - N will take you back to main menu."
+                puts "Keep looking around this menu? (Y/N) - N will take you back to the main menu."
                 user_input = user_input_method
                 if user_input.to_s.downcase == "y"
                     dynasty_menu

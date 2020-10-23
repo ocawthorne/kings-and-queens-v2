@@ -9,7 +9,7 @@ class Scraper
         rows.each do |row|
             td = row.css("td") # The "td" label in CSS falls beneath each "tr" label, where "tr" describes a row in the table and "td" describes each column of the row in order.
             next if td[1].text == "Commonwealth (1653–59)" # Special exception. There is a header in the table which is treated like another data point and is skipped over.
-            args = td.map { |i| i.text } # Produces a string-only array like ["", NAME, DYNASTY, REIGN] and uses this in initialization.
+            args = td.map { |i| i.text.tr(" ","") } # Produces a string-only array like ["", NAME, DYNASTY, REIGN] and uses this in initialization.
             next if args[1].split(" ")[-1] == "(restored)" # Skips over data if the monarch is reinstated, in other words does not duplicate.
             args[2] = "Commonwealth" if args[2] == "" # Special categorisation for Oliver and Richard Cromwell
             args[2] = "Plantagenet" if args[2].split(": ")[0] == "Plantagenet" # Plantagenet has two further divisions - Lancaster and York - which are unified into one.
