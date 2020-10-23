@@ -115,6 +115,7 @@ class CLI
     end
 
     def bookmark_view
+        puts "--------------------"
         @@bookmarks.each do |bookmark|
             puts "[-+-]"
             puts "#{bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name} (reigned #{bookmark.reign} AD)".green
