@@ -26,8 +26,7 @@ class CLI
         until (1..5).to_a.include?(user_input.to_i)
             user_input = user_input_method
             if (1..5).to_a.include?(user_input.to_i)
-                arr = [method(:monarch_menu), method(:dynasty_menu), method(:bookmark_view), method(:bookmark_delete), method(:goodbye)]
-                arr[user_input.to_i-1].call
+                [method(:monarch_menu), method(:dynasty_menu), method(:bookmark_view), method(:bookmark_delete), method(:goodbye)][user_input.to_i-1].call
             elsif user_input.to_s.downcase == "menu"
                 main_menu
             else
