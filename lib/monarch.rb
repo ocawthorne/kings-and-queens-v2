@@ -1,5 +1,5 @@
 class Monarch
-    attr_accessor :name, :url, :dynasty, :title, :reign, :bio # All except @title and @bio come from second scrape
+    attr_accessor :name, :url, :dynasty, :title, :reign, :bio # All except @title and @bio come from first scrape
 
     @@all = []
 
