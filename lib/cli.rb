@@ -118,7 +118,7 @@ class CLI
         puts "--------------------"
         @@bookmarks.each do |bookmark|
             puts "[-+-]"
-            puts "#{bookmark.name[-1].to_i != 0 ? bookmark.name.chop : bookmark.name} (reigned #{bookmark.reign} AD)".green
+            puts "#{bookmark.name} (reigned #{bookmark.reign} AD)".green
             puts "#{bookmark.title.upcase}. Dynasty: #{bookmark.dynasty.name.upcase}"
             puts "\n#{bookmark.bio}"
             puts "--------------------"
