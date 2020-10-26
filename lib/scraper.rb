@@ -12,10 +12,10 @@ class Scraper
             args = td.map { |i| i.text.tr(" ","") } # Produces a string-only array like ["", NAME, DYNASTY, REIGN] and uses this in initialization.
             next if args[1].split(" ")[-1] == "(restored)" # Avoids duplication.
             args[2] = "None (Interregnum)" if args[2] == "" # Special categorisation for Oliver and Richard Cromwell.
-            args[2] = "Plantagenet" if args[2].split(": ")[0] == "Plantagenet" # Unifying the Lancaster and York dynasties.
+            args[2] = "Plantagenet" if args[2].split(": ")[0] == "Plantagenet" # Alternatively, args[2] = args[2].split(": ")[0] works, but this method is safer.
             args[1] = args[1].chop if args[1][-1].to_i != 0 # Some names have footnote numbers. String values are equal to 0 when converted to_i.
             url = row.css(".md-crosslink").map { |el| el["href"] } # In one instance, this creates an array of two URLs (William III & Mary II)
-            monarch = Monarch.new(args[1], Dynasty.find_create_dynasty(args[2]), args[3], url) # Uses last 3 elements of array to initialize Monarch. Initializes or finds dynasties.
+            Monarch.new(args[1], Dynasty.find_create_dynasty(args[2]), args[3], url) # Uses last 3 elements of array to initialize Monarch. Initializes or finds dynasties.
         end
     end
 
