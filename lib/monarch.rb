@@ -9,6 +9,8 @@ class Monarch
         @dynasty = dynasty
         @reign = reign
         @url = url
+        # @title = title
+        # @bio = bio
         @@all << self
     end
 
