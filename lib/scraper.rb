@@ -15,9 +15,9 @@ class Scraper
             args[2] = "Plantagenet" if args[2].split(": ")[0] == "Plantagenet" # Alternatively, args[2] = args[2].split(": ")[0] works, but this method is safer.
             args[1] = args[1].chop if args[1][-1].to_i != 0 # Some names have footnote numbers. String values are equal to 0 when converted to_i.
             url = row.css(".md-crosslink").map { |el| el["href"] } # In one instance, this creates an array of two URLs (William III & Mary II)
-            # parsed_monarch = Nokogiri::HTML(open(url[0]))            |
-            # title = parsed_monarch.css(".topic-identifier").text     | NOTE: Solution inefficient, but loads all biographies. Takes 33 seconds rather than 0.5 using scrape_2.
-            # bio = parsed_monarch.css(".topic-content p")[1..2].text  |
+            # parsed_monarch = Nokogiri::HTML(open(url[0]))            #|
+            # title = parsed_monarch.css(".topic-identifier").text     #| NOTE: Solution inefficient, but loads all biographies. Takes 33 seconds rather than 0.5 using scrape_2.
+            # bio = parsed_monarch.css(".topic-content p")[1..2].text  #|
             Monarch.new(args[1], Dynasty.find_create_dynasty(args[2]), args[3], url) # Uses last 3 elements of array to initialize Monarch. Initializes or finds dynasties.
 
         end
