@@ -16,6 +16,7 @@ class CLI
     end
 
     def main_menu
+        clear
         puts "\nWelcome to the Main Menu. Please make a selection. Type \"menu\" at any stage to return here."
         puts "1. Display all monarchs."
         puts "2. Search by house/dynasty."
@@ -36,6 +37,7 @@ class CLI
     end
 
     def monarch_menu
+        clear
         puts "--------------------"
         puts "ALL MONARCHS".green
         Monarch.print_monarchs_for_selection
@@ -68,6 +70,7 @@ class CLI
     end
 
     def dynasty_menu
+        clear
         puts "--------------------"
         puts "HOUSES AND DYNASTIES".green
         Dynasty.print_dynasties_for_selection
@@ -79,6 +82,7 @@ class CLI
             if user_input.to_s.downcase == "menu"
                 main_menu
             elsif (1..Dynasty.all.count).to_a.include?(user_input.to_i)
+                clear
                 puts "--------------------"
                 Dynasty.list_monarchs_by_dynasty(user_input.to_i-1)
                 puts "--------------------"
@@ -115,6 +119,7 @@ class CLI
     end
 
     def bookmark_view
+        clear
         puts "--------------------"
         @@bookmarks.each do |bookmark|
             puts "[-+-]"
@@ -147,6 +152,7 @@ class CLI
 
     def bookmark_delete
         if @@bookmarks.count == 0 then puts "\nYou have no bookmarks to delete." ; sleep(1) ; main_menu end
+        clear
         puts "\nAre you sure you want to clear #{@@bookmarks.count} record"+(@@bookmarks.count != 1 ? "s" : "")+"? (Y/N)"
         user_input = user_input_method
         if user_input.to_s.downcase == "y"
@@ -173,6 +179,10 @@ class CLI
     def user_input_method
         print ">> "
         gets.chomp
+    end
+
+    def clear
+        print "\e[2J\e[f"
     end
 
 end

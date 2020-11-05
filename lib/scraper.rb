@@ -1,3 +1,4 @@
+require 'pry'
 class Scraper
 
     def get_page
@@ -19,7 +20,6 @@ class Scraper
             # title = parsed_monarch.css(".topic-identifier").text     #| NOTE: Solution inefficient, but loads all biographies. Takes 33 seconds rather than 0.5 using scrape_2.
             # bio = parsed_monarch.css(".topic-content p")[1..2].text  #|
             Monarch.new(args[1], Dynasty.find_create_dynasty(args[2]), args[3], url) # Uses last 3 elements of array to initialize Monarch. Initializes or finds dynasties.
-
         end
     end
 

@@ -14,6 +14,11 @@ class Monarch
         @@all << self
     end
 
+    def self.sort_by_name
+        # @@all.map {|monarch| monarch.name}.sort
+        @@all.sort_by(&:name)
+    end
+
     def self.all
         @@all
     end
@@ -23,6 +28,7 @@ class Monarch
     end
 
     def print_monarch_bio
+        print "\e[2J\e[f"
         Scraper.scrape_2(self)
         puts "[-+-]"
         puts "#{self.name} (reigned #{self.reign} AD)".green
