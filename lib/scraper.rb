@@ -1,4 +1,3 @@
-require 'pry'
 class Scraper
 
     def get_page

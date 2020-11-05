@@ -3,6 +3,7 @@ class CLI
     @@bookmarks = []
 
     def run
+        clear
         puts "Hello, welcome to Monarch Explorer!".green
         sleep(1)
         puts "Loading all divinely-appointed monarchs...".blue
@@ -17,7 +18,7 @@ class CLI
 
     def main_menu
         clear
-        puts "\nWelcome to the Main Menu. Please make a selection. Type \"menu\" at any stage to return here."
+        puts "Welcome to the Main Menu. Please make a selection. Type \"menu\" at any stage to return here."
         puts "1. Display all monarchs."
         puts "2. Search by house/dynasty."
         puts "3. View bookmarks."
